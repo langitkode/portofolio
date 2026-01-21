@@ -19,7 +19,25 @@ export const Route = createRootRoute({
         content: "width=device-width, initial-scale=1",
       },
       {
-        title: "PSE [LAB] — Product Systems Engineering",
+        title: "PSE LAB | indraprhmbd",
+      },
+      {
+        name: "description",
+        content:
+          "Technical build logs and architectural blueprints. Documenting systems, decisions, and trade-offs in product engineering.",
+      },
+      {
+        property: "og:title",
+        content: "PSE LAB | indraprhmbd",
+      },
+      {
+        property: "og:description",
+        content:
+          "Detailed engineering records and architecture blueprints for complex systems.",
+      },
+      {
+        property: "og:type",
+        content: "website",
       },
     ],
     links: [
@@ -33,7 +51,7 @@ export const Route = createRootRoute({
   shellComponent: RootDocument,
 });
 
-const convex = new ConvexReactClient("https:// PSE-LAB.convex.cloud");
+const convex = new ConvexReactClient(import.meta.env.VITE_CONVEX_URL as string);
 
 function RootDocument({ children }: { children: React.ReactNode }) {
   return (
