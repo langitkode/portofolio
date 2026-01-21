@@ -1,0 +1,18 @@
+[
+  {
+    "id": "realtime-data-pipelines",
+    "title": "Engine: Real-time Data Pipelines",
+    "summary": "Building systems that synchronize distributed state across users, services, and automation layers.",
+    "details": "Used in multi-user planners, dashboards, and internal tools where state consistency and speed matter.",
+    "stack": ["Convex", "Event-driven architecture", "TypeScript"],
+    "applied_in": ["KRSan", "Internal tooling"]
+  },
+  {
+    "id": "knowledge-synthesis-pipeline",
+    "title": "Pipeline: Automated Knowledge Synthesis",
+    "summary": "Building pipelines that transform raw engineering activity into structured technical knowledge.",
+    "details": "Converts commits, build logs, failures, and decisions into case studies and documentation automatically.",
+    "stack": ["MDX", "LLM agents", "Static generation"],
+    "applied_in": ["Portfolio system", "Build logs"]
+  }
+]

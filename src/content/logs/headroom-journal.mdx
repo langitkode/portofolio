@@ -1,0 +1,113 @@
+---
+title: "Headroom Journal"
+date: "2026-01-06"
+status: "production"
+users: null
+description: "Editorial journal platform about music, art, and culture built with Next.js and Sanity CMS."
+tags: ["CMS", "Content", "Next.js", "Sanity"]
+---
+
+## Context
+
+Headroom Journal is a content platform dedicated to documenting music, art, and pop culture narratives.  
+The site was intended to allow non-technical authors and editors to publish content independently without requiring code deployments.
+
+It integrates a headless CMS to separate content management from site rendering, giving authors a UI experience while maintaining a performant frontend.
+
+---
+
+## Problem
+
+Before implementing a CMS, the editorial workflow was:
+
+- content stored in static files
+- site updates required developer involvement
+- publishing content was slow or error-prone
+- status updates were difficult to preview
+
+The core problem was **editor dependency on developer releases**, not content quality.
+
+---
+
+## Why Existing Solutions Failed
+
+- Static markdown workflows lack live editor interfaces
+- Simple blogs do not support structured content well
+- Traditional CMS require heavy backend infrastructure
+
+None of these approaches provided a **quick, collaborative editorial workflow** integrated with a modern frontend.
+
+Sanity provides a real-time, schema-based CMS that solves most of these editorial constraints.
+
+---
+
+## System Design
+
+The platform separates:
+
+- **CMS content** — authored in Sanity Studio
+- **Rendering** — handled by Next.js via GROQ queries
+- **Frontend** — optimized for fast delivery and SEO
+
+The design allows editors to craft and update content without code deployments, while Next.js builds pages using static or incremental rendering.
+
+---
+
+## Architecture
+
+### CMS (Sanity)
+
+- Headless content models for posts, tags, authors
+- GROQ queries to fetch structured content
+- Real-time editing capabilities
+
+### Frontend (Next.js)
+
+- Dynamic routes for articles
+- Uses server-side or static rendering for performance
+- Tailwind CSS for design
+- Components powered by Sanity data
+
+### Deployment
+
+- Frontend deployed on Vercel
+- Sanity hosted in the cloud
+
+---
+
+## Trade-offs
+
+- Dependence on Sanity as a third-party CMS (vendor lock-in)
+- GROQ query language learning curve
+- Content updates sometimes require ISR refresh
+- TypeScript types may require manual maintenance with schema changes
+
+These trade-offs were chosen for editorial workflow benefits and rapid iteration.
+
+---
+
+## What Broke
+
+- Preview caching delays at times
+- Some schema changes broke rendering until types updated
+- Image rendering and optimization took extra config
+
+These issues led to documentation on schema updates and ISR configurations for editors.
+
+---
+
+## What Was Learned
+
+- Headless CMS dramatically improved editorial autonomy
+- GROQ and Next.js integration can be optimized further
+- Structured content modeling is essential for future features
+- Editors need clear content guidelines
+
+---
+
+## Result
+
+- A live, editor-driven journal site
+- Content publishable without developer deployments
+- Fast, SEO-friendly rendering
+- Sustainable editorial workflow

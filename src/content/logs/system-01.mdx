@@ -1,0 +1,54 @@
+---
+title: "System 01: The Identity Lab"
+date: "2026-01-21"
+description: "Architecting a public lab for systems engineering vs a traditional portfolio."
+tags: ["Architecture", "TanStack", "Cloudflare"]
+---
+
+# Context
+
+Every engineer needs a public record. Most choose a portfolio—a gallery of screenshots and tech stacks. I needed a lab.
+
+# Problem
+
+Static portfolios are marketing sites. They hide the mess. They hide the trade-offs. They hide the _engineering_. I wanted a system that prioritizes the narrative of the build over the visual of the result.
+
+# Why existing solutions failed
+
+- **GitHub**: Too much noise. READMEs are for users, not for reflecting on architecture.
+- **Blogs**: Too disconnected. I wanted the documentation to live alongside the system's identity.
+- **Portfolios**: Too polished. No room for "this broke and I don't know why yet."
+
+# System design
+
+The system is built on **TanStack Start**. It uses a "Static-First, Interaction-Second" approach.
+
+- **Content**: MDX-driven writing. Portable, version-controlled.
+- **Interactions**: Convex-driven reactions and views. Minimal, serverless.
+- **Styling**: Grayscale, 720px max-width. Focused on reading.
+
+# Architecture
+
+```mermaid
+graph TD
+    A[MDX Content] --> B[TanStack Start]
+    C[Convex] <-> B
+    B --> D[Cloudflare Pages]
+```
+
+# Trade-offs
+
+I chose TanStack Start over Next.js.
+_Trade-off_: Smaller ecosystem, but significantly better type safety for search params and transitions.
+
+# What broke
+
+Initial directory structure was nested too deep due to CLI defaults. Had to script a flattening process to maintain root-level clarity.
+
+# What was learned
+
+Readability is a technical constraint. By restricting the layout to 720px, I'm forcing the content to be the primary engine of the site.
+
+# Result
+
+A minimalist, high-performance identity site that feels like a technical manual.

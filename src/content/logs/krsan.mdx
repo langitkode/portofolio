@@ -1,0 +1,139 @@
+---
+title: "KRSan"
+date: "2026-01-18"
+status: "production"
+users: 100
+description: "Automatic KRS planning system that generates study plans from student preferences and real schedule constraints."
+tags: ["System", "Architecture", "Education", "AI"]
+---
+
+## Context
+
+KRS (Kartu Rencana Studi) planning is a recurring pain point for students every semester.
+They need to manually combine course availability, schedule conflicts, credit limits, and personal preferences under time pressure.
+
+This system was created after observing multiple students fail to register optimal schedules simply because planning was too complex to do manually.
+
+---
+
+## Problem
+
+Students cannot reliably generate an optimal KRS plan within limited time because:
+
+- schedules overlap
+- courses have hidden constraints
+- manual trial-and-error is slow
+- existing tools are static and non-adaptive
+
+The core problem is **combinatorial complexity exposed to humans**.
+
+---
+
+## Why Existing Solutions Failed
+
+Most existing solutions:
+
+- only display schedules, not generate them
+- require manual filtering
+- do not adapt to user preferences
+- break when data is incomplete
+- assume students understand constraints
+
+They push complexity to users instead of solving it.
+
+---
+
+## System Design
+
+KRSan was designed as a **planning engine**, not a scheduler UI.
+
+Key principles:
+
+- users express intent, not logic
+- system generates multiple plans
+- AI explains plans, not decides them
+- final choice remains human
+
+The system outputs 3–5 valid plans ranked by preference fit.
+
+---
+
+## Architecture
+
+### Client
+
+- Vite-based SPA
+- Preference form
+- Plan comparison UI
+- Real-time updates via Convex
+
+### Server
+
+- Convex functions for:
+  - plan generation
+  - constraint validation
+  - session persistence
+
+### Engine
+
+- combination generation using:
+  - all-pairs algorithm
+  - random sampling for large search space
+- rule-based validator
+- RAG-powered explanation engine (Groq LLM)
+
+### Database
+
+- Convex (primary state)
+- Immutable logs for plan generation
+
+### Auth
+
+- Clerk for auth + session
+
+### Deployment
+
+- Frontend → Cloudflare Pages
+- Backend → Convex cloud
+- Domain → custom domain (production)
+
+---
+
+## Trade-offs
+
+- Used random sampling instead of full search (accuracy vs speed)
+- Limited plans to 3 results (clarity vs exhaustiveness)
+- AI only explains plans, does not choose (trust vs automation)
+- Chose Convex over Supabase (speed vs ecosystem)
+
+---
+
+## What Broke
+
+- Clerk rate limit hit after 100 users
+- Convex function timeouts on large combinations
+- Some schedules produced 0 valid plans
+- Users misunderstood preference weights
+- LLM explanations hallucinated constraints early on
+
+Each failure forced simplification of both UI and engine.
+
+---
+
+## What Was Learned
+
+- Planning is a UX problem, not algorithmic one
+- Users prefer fewer good plans over many options
+- Constraints must be visible, not hidden
+- AI should explain, not decide
+- Real users will always break assumptions
+
+---
+
+## Result
+
+- 100 active users during development
+- Used without marketing
+- Successfully generated plans for multiple departments
+- Deployed as real production system
+- Validated idea before monetization

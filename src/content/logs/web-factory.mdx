@@ -1,0 +1,129 @@
+---
+title: "UMKM Web-Factory"
+date: "2026-01-10"
+status: "production"
+users: 50
+description: "Automated tenant generator system that creates, deploys, and manages production-ready UMKM websites using GitHub and Cloudflare Pages."
+tags: ["System", "Automation", "Infrastructure", "SaaS"]
+---
+
+## Context
+
+Building websites for UMKM is usually slow because each site is treated as a custom project.  
+In practice, most of the work is repetitive: project setup, layout wiring, deployment, and hosting configuration.
+
+This system was created to turn website creation into a repeatable manufacturing process instead of manual craftsmanship.
+
+## Problem
+
+UMKM need websites quickly for validation and marketing, but developers cannot scale manual builds.
+
+The real bottleneck is not design or coding, but deployment and operational overhead.
+
+One developer cannot reliably ship dozens of sites without automation.
+
+## Why Existing Solutions Failed
+
+- Page builders generate low-quality output
+- CMS still require manual setup per site
+- Agencies scale people, not systems
+- Deployment is always manual
+- Hosting is a barrier for non-technical users
+
+No existing tool treated websites as generated artifacts.
+
+## System Design
+
+UMKM Web-Factory treats each website as a compiled tenant from structured data.
+
+Core principles:
+
+- tenant config is JSON
+- template is deterministic
+- preview and production are separated
+- deployment is automated end-to-end
+- marketer can operate without developer help
+
+A single command produces a live website.
+
+## Architecture
+
+### Admin Layer
+
+- Admin dashboard to manage tenant data
+- Template selection
+- Tenant JSON configuration
+
+### Generator Engine
+
+- Node.js-based CLI
+- Generates clean Next.js project
+- Injects selected template only
+- Removes unused code paths
+- Static export optimized
+
+### Preview Pipeline
+
+Command:
+
+```bash
+npm run generate <tenant-id> preview
+```
+
+This automatically:
+
+- creates Next.js project
+- initializes git repo
+- creates public GitHub repository
+- pushes code
+- deploys to Cloudflare Pages
+- outputs live preview URL
+
+Preview sites are used for door-to-door marketing.
+
+### Production Pipeline
+
+Command:
+
+```bash
+npm run promote <tenant-id>
+```
+
+This:
+
+- creates private GitHub repository
+- deploys production site
+- prepares for custom domain
+- optionally deletes preview
+
+### Infrastructure
+
+- Hosting: Cloudflare Pages
+- Source Control: GitHub (repo per tenant)
+- Execution: Local machine (no VPS)
+- Tracking: generated-sites.json
+- Secrets: .env.local (never committed)
+
+### Trade-offs
+
+- Local execution instead of VPS (zero cost vs reliability)
+- Static sites only (scale vs flexibility)
+- Limited template choices (speed vs customization)
+- CLI-driven workflow (power vs usability)
+- GitHub repo per tenant (isolation vs overhead)
+
+## What Was Learned
+
+- Websites are data, not projects
+- Deployment is the real bottleneck
+- Determinism simplifies scaling
+- Non-dev operators need guardrails
+- Infra automation beats UI builders
+
+## Result
+
+- Dozens of sites generated in days
+- Door-to-door marketing enabled
+- Zero hosting cost
+- One developer replaced agency workflow
+- System now acts as internal SaaS platform

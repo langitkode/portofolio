@@ -1,0 +1,31 @@
+---
+title: "KRSan Architecture"
+---
+
+## Diagram
+
+<Diagram src="/diagrams/krsan.svg" />
+
+## Core Components
+
+- Client React Vite
+- Convex backend
+- Realtime state engine
+- LLM planning agent
+
+## Invariants
+
+- planning is deterministic
+- AI never commits state
+- user always owns final decision
+
+## Key Decisions
+
+- Convex over Supabase (real-time + simplicity)
+- LLM as advisor, not executor
+- Event-based state sync
+
+## Failure Modes
+
+- stale state in multi-tab usage
+- cost spikes from LLM calls
