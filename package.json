@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite dev --port 3000",
-    "build": "vite build && cp dist/server/index.js dist/client/_worker.js && cp -r dist/server/assets dist/client/",
+    "build": "vite build && cp dist/server/index.js dist/client/_worker.js",
     "preview": "vite preview",
     "test": "vitest run",
     "deploy": "npm run build && wrangler deploy",
