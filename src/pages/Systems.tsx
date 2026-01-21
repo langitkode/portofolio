@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "react-router-dom";
 import { Typography } from "../components/ui";
 
 const logModules = import.meta.glob("../content/logs/*.mdx", { eager: true });
@@ -6,11 +6,7 @@ const arcModules = import.meta.glob("../content/architecture/*.mdx", {
   eager: false,
 });
 
-export const Route = createFileRoute("/systems/")({
-  component: SystemsPage,
-});
-
-function SystemsPage() {
+export default function Systems() {
   const systems = Object.entries(logModules)
     .map(([path, mod]: [string, any]) => {
       const slug = path.split("/").pop()?.replace(".mdx", "") || "";
@@ -42,7 +38,7 @@ function SystemsPage() {
       <section>
         <Typography variant="h2">Purpose</Typography>
         <Typography>
-          This section documents the architectural foundations of systems I’ve
+          This section documents the architectural foundations of systems I've
           built.
         </Typography>
         <Typography>
@@ -56,7 +52,7 @@ function SystemsPage() {
       </section>
 
       <section>
-        <Typography variant="h2">What You’ll Find Here</Typography>
+        <Typography variant="h2">What You'll Find Here</Typography>
 
         <div className="space-y-8">
           <div>
@@ -109,8 +105,7 @@ function SystemsPage() {
             <li key={system.slug} className="group">
               {system.hasArchitecture ? (
                 <Link
-                  to="/systems/$slug"
-                  params={{ slug: system.slug }}
+                  to={`/systems/${system.slug}`}
                   className="flex gap-4 hover:opacity-70 transition-opacity"
                 >
                   <span className="font-mono text-brand-muted text-sm mt-1 group-hover:text-brand-text transition-colors">

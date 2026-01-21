@@ -1,7 +1,10 @@
-import { Link } from "@tanstack/react-router";
+import { Link, NavLink } from "react-router-dom";
 import { Container } from "./ui";
 
 export default function Header() {
+  const activeClass = ({ isActive }: { isActive: boolean }) =>
+    isActive ? "text-brand-text font-medium" : "hover:text-brand-text";
+
   return (
     <header className="py-12">
       <Container className="flex justify-between items-baseline">
@@ -12,24 +15,15 @@ export default function Header() {
           PSE LAB
         </Link>
         <nav className="flex gap-6 text-sm text-brand-muted">
-          <Link
-            to="/"
-            className="[&.active]:text-brand-text [&.active]:font-medium hover:text-brand-text"
-          >
+          <NavLink to="/" className={activeClass}>
             Manifesto
-          </Link>
-          <Link
-            to="/logs"
-            className="[&.active]:text-brand-text [&.active]:font-medium hover:text-brand-text"
-          >
+          </NavLink>
+          <NavLink to="/logs" className={activeClass}>
             Logs
-          </Link>
-          <Link
-            to="/systems"
-            className="[&.active]:text-brand-text [&.active]:font-medium hover:text-brand-text"
-          >
+          </NavLink>
+          <NavLink to="/systems" className={activeClass}>
             Systems
-          </Link>
+          </NavLink>
         </nav>
       </Container>
     </header>

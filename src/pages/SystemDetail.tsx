@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { useParams } from "react-router-dom";
 import { Typography } from "../components/ui";
 import React, { Suspense } from "react";
 import Mermaid from "../components/Mermaid";
@@ -7,10 +7,6 @@ import Interactions from "../components/Interactions";
 
 // Dynamic import map for architectures
 const architectures = import.meta.glob("../content/architecture/*.mdx");
-
-export const Route = createFileRoute("/systems/$slug")({
-  component: SystemDetail,
-});
 
 const components = {
   h1: (props: any) => <Typography variant="h1" {...props} />,
@@ -26,8 +22,8 @@ const components = {
   },
 };
 
-function SystemDetail() {
-  const { slug } = Route.useParams();
+export default function SystemDetail() {
+  const { slug } = useParams<{ slug: string }>();
 
   // Find the matching architecture
   const arcPath = `../content/architecture/${slug}.mdx`;
@@ -60,7 +56,7 @@ function SystemDetail() {
         </Typography>
         <Typography variant="h1" className="mb-0">
           {slug
-            .split("-")
+            ?.split("-")
             .map((word) => word.charAt(0) + word.slice(1))
             .join(" ")}
         </Typography>

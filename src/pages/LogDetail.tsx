@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { useParams } from "react-router-dom";
 import { Typography } from "../components/ui";
 import React, { Suspense } from "react";
 import Mermaid from "../components/Mermaid";
@@ -7,10 +7,6 @@ import Interactions from "../components/Interactions";
 
 // Dynamic import map for logs
 const logs = import.meta.glob("../content/logs/*.mdx");
-
-export const Route = createFileRoute("/logs/$slug")({
-  component: LogDetail,
-});
 
 const components = {
   h1: (props: any) => <Typography variant="h1" {...props} />,
@@ -27,8 +23,8 @@ const components = {
   },
 };
 
-function LogDetail() {
-  const { slug } = Route.useParams();
+export default function LogDetail() {
+  const { slug } = useParams<{ slug: string }>();
 
   // Find the matching log
   const logPath = `../content/logs/${slug}.mdx`;

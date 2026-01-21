@@ -1,19 +1,14 @@
-import { createFileRoute } from "@tanstack/react-router";
 import { Typography } from "../components/ui";
 import focusData from "../data/focus.json";
 
-export const Route = createFileRoute("/")({
-  component: Home,
-});
-
-function Home() {
+export default function Home() {
   return (
     <div className="space-y-12">
       <section>
         <Typography variant="h1">The System Is the Product</Typography>
         <Typography>I am a Product Systems Engineer.</Typography>
         <Typography>
-          I don’t just build features. I design engines, pipelines, and
+          I don't just build features. I design engines, pipelines, and
           generators that make products scale beyond manual work. Most of my
           projects started as a single idea and became systems used by real
           people: planners, internal tools, content platforms, and automation
@@ -21,7 +16,7 @@ function Home() {
         </Typography>
         <Typography>This site is my public lab.</Typography>
         <Typography>
-          Here I document systems I’ve built, the decisions behind them, and the
+          Here I document systems I've built, the decisions behind them, and the
           trade-offs I accepted. Not as success stories, but as engineering
           records.
         </Typography>
@@ -34,7 +29,7 @@ function Home() {
             <Typography variant="h3">{"Ownership > Speed"}</Typography>
             <Typography>
               I move fast, but never at the cost of understanding. A system I
-              don’t fully own will eventually break me.
+              don't fully own will eventually break me.
             </Typography>
           </div>
           <div>
@@ -74,10 +69,10 @@ function Home() {
 
         <div className="mt-12 p-6 bg-brand-border/10 border border-brand-border rounded-lg">
           <Typography variant="small" className="italic mb-0">
-            “A senior engineer is someone who has made enough mistakes to
+            "A senior engineer is someone who has made enough mistakes to
             recognize them before they happen.
             <br />
-            This lab is where I record mine.”
+            This lab is where I record mine."
           </Typography>
         </div>
       </section>
