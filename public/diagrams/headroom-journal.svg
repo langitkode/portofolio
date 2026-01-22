@@ -25,4 +25,28 @@
   <!-- Web Client -->
   <rect x="310" y="195" width="240" height="70" class="box"></rect>
   <text x="430" y="225" text-anchor="middle" class="text">Web Client</text>
-  </svg>
+  <text x="430" y="245" text-anchor="middle" class="label">(Next.js)</text>
+
+  <!-- Build Pipeline -->
+  <rect x="310" y="310" width="240" height="70" class="box"></rect>
+  <text x="430" y="340" text-anchor="middle" class="text">Build &amp; Revalidation</text>
+  <text x="430" y="360" text-anchor="middle" class="label">(SSR / ISR / SSG)</text>
+
+  <!-- Edge -->
+  <rect x="650" y="195" width="200" height="70" class="box"></rect>
+  <text x="750" y="225" text-anchor="middle" class="text">Edge Delivery</text>
+  <text x="750" y="245" text-anchor="middle" class="label">(CDN)</text>
+
+  <!-- Arrows -->
+  <line x1="240" y1="230" x2="310" y2="115" class="arrow"></line>
+  <text x="255" y="165" class="label">write</text>
+
+  <line x1="550" y1="115" x2="550" y2="195" class="arrow"></line>
+  <text x="565" y="165" class="label">fetch</text>
+
+  <line x1="430" y1="265" x2="430" y2="310" class="arrow"></line>
+  <text x="445" y="295" class="label">build</text>
+
+  <line x1="550" y1="230" x2="650" y2="230" class="arrow"></line>
+  <text x="580" y="220" class="label">serve</text>
+</svg>
