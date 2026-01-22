@@ -47,7 +47,7 @@ export default function Systems() {
         </Typography>
         <Typography>
           I treat architecture as a record of constraints, trade-offs, and
-          intent — not as a static diagram, but as a living system log.
+          intent not as a static diagram, but as a living system log.
         </Typography>
       </section>
 

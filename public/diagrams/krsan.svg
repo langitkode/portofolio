@@ -1,8 +1,63 @@
-<svg width="400" height="200" viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="400" height="200" fill="#0a0a0a"/>
-  <rect x="0.5" y="0.5" width="399" height="199" stroke="#333" stroke-dasharray="4 4"/>
-  <text x="50%" y="45%" dominant-baseline="middle" text-anchor="middle" fill="#666" font-family="monospace" font-size="14" font-weight="bold">SYSTEM_BLUEPRINT: KRSAN</text>
-  <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" fill="#444" font-family="monospace" font-size="10">WAITING_FOR_TECHNICAL_RENDER</text>
-  <path d="M180 140H220" stroke="#333" stroke-width="2"/>
-  <path d="M200 120V160" stroke="#333" stroke-width="2"/>
+<svg width="900" height="480" viewBox="0 0 900 480" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .box { fill: none; stroke: #000; stroke-width: 1.5; }
+    .text { font-family: Arial, sans-serif; font-size: 13px; fill: #000; }
+    .arrow { stroke: #000; stroke-width: 1.2; fill: none; marker-end: url(#arrowhead); }
+    .label { font-size: 12px; fill: #000; }
+  </style>
+
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#000"></polygon>
+    </marker>
+  </defs>
+
+  <!-- Client -->
+  <rect x="40" y="200" width="200" height="70" class="box"></rect>
+  <text x="140" y="230" text-anchor="middle" class="text">Client</text>
+  <text x="140" y="250" text-anchor="middle" class="label">(Vite + React)</text>
+
+  <!-- Auth -->
+  <rect x="300" y="80" width="200" height="70" class="box"></rect>
+  <text x="400" y="110" text-anchor="middle" class="text">Auth &amp; Session</text>
+  <text x="400" y="130" text-anchor="middle" class="label">(Clerk)</text>
+
+  <!-- Backend -->
+  <rect x="300" y="200" width="200" height="70" class="box"></rect>
+  <text x="400" y="230" text-anchor="middle" class="text">Backend Functions</text>
+  <text x="400" y="250" text-anchor="middle" class="label">(Convex)</text>
+
+  <!-- Planner -->
+  <rect x="300" y="330" width="200" height="70" class="box"></rect>
+  <text x="400" y="360" text-anchor="middle" class="text">Planner Engine</text>
+  <text x="400" y="380" text-anchor="middle" class="label">(Combinator + Sampler)</text>
+
+  <!-- Database -->
+  <rect x="600" y="200" width="200" height="70" class="box"></rect>
+  <text x="700" y="230" text-anchor="middle" class="text">Database</text>
+  <text x="700" y="250" text-anchor="middle" class="label">(Convex Realtime DB)</text>
+
+  <!-- LLM -->
+  <rect x="600" y="330" width="200" height="70" class="box"></rect>
+  <text x="700" y="360" text-anchor="middle" class="text">LLM Assist</text>
+  <text x="700" y="380" text-anchor="middle" class="label">(Groq LLM + RAG)</text>
+
+  <!-- Arrows -->
+  <line x1="240" y1="235" x2="300" y2="115" class="arrow"></line>
+  <text x="255" y="160" class="label">login</text>
+
+  <line x1="240" y1="235" x2="300" y2="235" class="arrow"></line>
+  <text x="255" y="225" class="label">actions</text>
+
+  <line x1="240" y1="235" x2="300" y2="365" class="arrow"></line>
+  <text x="255" y="330" class="label">preferences</text>
+
+  <line x1="500" y1="235" x2="600" y2="235" class="arrow"></line>
+  <text x="530" y="225" class="label">read/write</text>
+
+  <line x1="500" y1="365" x2="600" y2="365" class="arrow"></line>
+  <text x="530" y="350" class="label">context</text>
+
+  <line x1="700" y1="330" x2="700" y2="270" class="arrow"></line>
+  <text x="715" y="310" class="label">guidance</text>
 </svg>

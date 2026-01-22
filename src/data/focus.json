@@ -1,18 +1,40 @@
 [
   {
     "id": "realtime-data-pipelines",
-    "title": "Engine: Real-time Data Pipelines",
-    "summary": "Building systems that synchronize distributed state across users, services, and automation layers.",
-    "details": "Used in multi-user planners, dashboards, and internal tools where state consistency and speed matter.",
-    "stack": ["Convex", "Event-driven architecture", "TypeScript"],
-    "applied_in": ["KRSan", "Internal tooling"]
+    "title": "Engine: Reactive State & Pipelines",
+    "summary": "Designing engines that synchronize distributed state across users and automation layers with deterministic consistency.",
+    "stack": [
+      "Convex",
+      "TypeScript",
+      "Event-driven architecture",
+      "State reconciliation"
+    ],
+    "applied_in": [
+      "KRSan (Planner Engine)",
+      "Internal Dashboards",
+      "Real-time Collaboration Tools"
+    ]
   },
   {
-    "id": "knowledge-synthesis-pipeline",
-    "title": "Pipeline: Automated Knowledge Synthesis",
-    "summary": "Building pipelines that transform raw engineering activity into structured technical knowledge.",
-    "details": "Converts commits, build logs, failures, and decisions into case studies and documentation automatically.",
-    "stack": ["MDX", "LLM agents", "Static generation"],
-    "applied_in": ["Portfolio system", "Build logs"]
+    "id": "automation-generators",
+    "title": "Pipeline: Automation & Content Generators",
+    "summary": "Building pipelines that transform raw data or manual activity into structured, mass-produced digital assets.",
+    "stack": ["MDX", "Vite", "Node.js Scripting", "Asset Pipelines"],
+    "applied_in": [
+      "Web-Factory (UMKM Automation)",
+      "Headroom Journal (Content CMS)",
+      "PSE LAB (Auto-documentation)"
+    ]
+  },
+  {
+    "id": "visual-interactive-systems",
+    "title": "Architecture: Visual & Interactive Systems",
+    "summary": "Developing robust component architectures for high-interactivity environments like games and system diagrams.",
+    "stack": ["React", "Tailwind CSS", "Mermaid.js", "Component-driven design"],
+    "applied_in": [
+      "Mini-Y3 (Web Games)",
+      "Architecture Blueprint Viewers",
+      "Interactive Lab Metrics"
+    ]
   }
 ]

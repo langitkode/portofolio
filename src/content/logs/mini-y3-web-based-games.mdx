@@ -1,0 +1,103 @@
+---
+title: "Mini-Y3-Web-Based-Games"
+date: "2025-12-27"
+description: "Turn-based multiplayer game platform built as an experiment in database-driven real-time state synchronization."
+tags: ["System", "Architecture", "Realtime", "Experiment"]
+---
+
+# Context
+
+MiniY3 was created as an experiment to explore how far multiplayer systems could be built without dedicated game servers or WebSocket infrastructure.
+
+Most casual multiplayer games rely on complex networking stacks that are difficult to debug and expensive to operate.  
+This project aimed to test whether turn-based multiplayer interactions could be modeled using only database state and realtime subscriptions.
+
+# Problem
+
+The core challenge was building multiplayer interactions that are:
+
+- consistent across devices
+- tolerant to latency
+- easy to debug
+- cheap to operate
+- simple to extend
+
+Without a game server, state coordination becomes the primary bottleneck.
+
+# Why existing solutions failed
+
+Most tutorials and frameworks assume:
+
+- authoritative game servers
+- WebSocket-based communication
+- continuous real-time loops
+- engine-level abstractions
+
+These approaches add complexity that is unnecessary for turn-based games and make the system harder to reason about for small teams or solo developers.
+
+# System design
+
+MiniY3 uses a Shell and Cartridge model.
+
+The shell provides shared infrastructure:
+
+- routing
+- UI framework
+- realtime synchronization
+- room management
+
+Each cartridge defines:
+
+- game rules
+- schema
+- state transitions
+- UI rendering
+
+The database is treated as the source of truth and the coordination layer.
+
+# Architecture
+
+- Client (Next.js)
+- Realtime Subscriptions (Supabase)
+- PostgreSQL (Game State)
+
+There is no game server.
+Clients read and write state, and all coordination is handled through deterministic state transitions in the database.
+
+Each game has its own table and schema, but shares the same synchronization model.
+
+# Trade-offs
+
+- turn-based only (determinism over speed)
+- database-driven state (simplicity over scale)
+- no server authority (clarity over control)
+- accepted latency for ease of debugging
+- no anti-cheat layer (experimental scope)
+
+These trade-offs allowed rapid iteration and zero infrastructure cost.
+
+# What broke
+
+- race conditions during simultaneous moves
+- stale UI when multiple tabs were open
+- delayed realtime updates under load
+- invalid state from retried requests
+- edge cases when players disconnected mid-game
+
+Fixes focused on tightening state invariants and validating transitions, not adding servers.
+
+# What was learned
+
+- databases can act as coordination engines
+- deterministic state simplifies multiplayer logic
+- most bugs are modeling issues, not network issues
+- simple architectures scale better mentally than technically
+- constraints are more important than features
+
+# Result
+
+- multiple multiplayer games shipped under one platform
+- online play working without game servers
+- zero infrastructure cost
+- new games added without rewriting core logic
+- platform now acts as a testbed for real-time state modeling

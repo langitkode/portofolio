@@ -1,0 +1,47 @@
+<svg width="800" height="420" viewBox="0 0 800 420" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .box { fill: none; stroke: #000; stroke-width: 1.5; }
+    .text { font-family: Arial, sans-serif; font-size: 13px; fill: #000; }
+    .arrow { stroke: #000; stroke-width: 1.2; fill: none; marker-end: url(#arrowhead); }
+    .label { font-size: 12px; fill: #000; }
+  </style>
+
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#000"></polygon>
+    </marker>
+  </defs>
+
+  <!-- Client -->
+  <rect x="50" y="160" width="180" height="70" class="box"></rect>
+  <text x="140" y="190" text-anchor="middle" class="text">Client</text>
+  <text x="140" y="210" text-anchor="middle" class="label">(Next.js)</text>
+
+  <!-- Realtime -->
+  <rect x="310" y="80" width="180" height="70" class="box"></rect>
+  <text x="400" y="110" text-anchor="middle" class="text">Realtime Sync</text>
+  <text x="400" y="130" text-anchor="middle" class="label">(Supabase Realtime)</text>
+
+  <!-- Database -->
+  <rect x="310" y="260" width="180" height="70" class="box"></rect>
+  <text x="400" y="290" text-anchor="middle" class="text">Database</text>
+  <text x="400" y="310" text-anchor="middle" class="label">(PostgreSQL)</text>
+
+  <!-- Game Cartridges -->
+  <rect x="570" y="160" width="180" height="70" class="box"></rect>
+  <text x="660" y="190" text-anchor="middle" class="text">Game Cartridges</text>
+  <text x="660" y="210" text-anchor="middle" class="label">(Schemas + Rules)</text>
+
+  <!-- Arrows -->
+  <line x1="230" y1="195" x2="310" y2="115" class="arrow"></line>
+  <text x="250" y="140" class="label">subscribe</text>
+
+  <line x1="230" y1="195" x2="310" y2="295" class="arrow"></line>
+  <text x="250" y="260" class="label">write / read</text>
+
+  <line x1="490" y1="115" x2="570" y2="195" class="arrow"></line>
+  <text x="520" y="140" class="label">events</text>
+
+  <line x1="490" y1="295" x2="570" y2="195" class="arrow"></line>
+  <text x="520" y="270" class="label">state</text>
+</svg>

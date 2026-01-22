@@ -14,8 +14,6 @@ The site was intended to allow non-technical authors and editors to publish cont
 
 It integrates a headless CMS to separate content management from site rendering, giving authors a UI experience while maintaining a performant frontend.
 
----
-
 ## Problem
 
 Before implementing a CMS, the editorial workflow was:
@@ -27,8 +25,6 @@ Before implementing a CMS, the editorial workflow was:
 
 The core problem was **editor dependency on developer releases**, not content quality.
 
----
-
 ## Why Existing Solutions Failed
 
 - Static markdown workflows lack live editor interfaces
@@ -39,19 +35,15 @@ None of these approaches provided a **quick, collaborative editorial workflow** 
 
 Sanity provides a real-time, schema-based CMS that solves most of these editorial constraints.
 
----
-
 ## System Design
 
 The platform separates:
 
-- **CMS content** — authored in Sanity Studio
-- **Rendering** — handled by Next.js via GROQ queries
-- **Frontend** — optimized for fast delivery and SEO
+- **CMS content**: authored in Sanity Studio
+- **Rendering**: handled by Next.js via GROQ queries
+- **Frontend**: optimized for fast delivery and SEO
 
 The design allows editors to craft and update content without code deployments, while Next.js builds pages using static or incremental rendering.
-
----
 
 ## Architecture
 
@@ -73,8 +65,6 @@ The design allows editors to craft and update content without code deployments, 
 - Frontend deployed on Vercel
 - Sanity hosted in the cloud
 
----
-
 ## Trade-offs
 
 - Dependence on Sanity as a third-party CMS (vendor lock-in)
@@ -84,8 +74,6 @@ The design allows editors to craft and update content without code deployments, 
 
 These trade-offs were chosen for editorial workflow benefits and rapid iteration.
 
----
-
 ## What Broke
 
 - Preview caching delays at times
@@ -94,16 +82,12 @@ These trade-offs were chosen for editorial workflow benefits and rapid iteration
 
 These issues led to documentation on schema updates and ISR configurations for editors.
 
----
-
 ## What Was Learned
 
 - Headless CMS dramatically improved editorial autonomy
 - GROQ and Next.js integration can be optimized further
 - Structured content modeling is essential for future features
 - Editors need clear content guidelines
-
----
 
 ## Result
 

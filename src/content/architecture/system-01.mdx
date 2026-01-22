@@ -1,0 +1,48 @@
+---
+title: "System 01 Architecture: The Identity Lab"
+---
+
+## Diagram
+
+<Diagram src="/diagrams/system-01.svg" />
+
+## Core Components
+
+- **Vite + React Router**  
+  The core engine providing high-performance static builds and client-side navigation without SSR complexity.
+
+- **Convex Interaction Store**  
+  A serverless backend lake for real-time reactions and page views, decoupled from the main content delivery.
+
+- **MDX Data Layer**  
+  The source of truth for technical narratives, combining markdown with interactive components.
+
+- **Technical UI Components**  
+  Minimalist, constrained typography and layout system (720px max-width) designed for reading efficiency.
+
+- **Generation Scripts**  
+  Automation layer for creating standardized log and architecture templates to reduce operational friction.
+
+## Invariants
+
+- Content must be readable without JavaScript (Hydration optional for text)
+- The UI must never rely on explicit borders or separators (Whitespace-driven)
+- State transitions must not block content rendering
+- Every build log must link to its corresponding architecture blueprint if available
+- Interactions (Convex) must fail gracefully to local storage
+
+## Key Decisions
+
+- Pivot from TanStack Start to Vite + React Router to minimize deployment complexity
+- Use grayscale-only aesthetics to emphasize content over visual noise
+- Standardize on Mermaid.js for all architectural diagrams
+- Decouple backend interactions from the static content layer
+- Enforce 720px max-width for optimal reading speed
+
+## Failure Modes
+
+- Backend (Convex) disconnect resulting in stale or missing reaction counts
+- MDX hydration errors due to component version drifts
+- Deployment failures when build artifacts exceed platform limits
+- Performance degradation when loading complex Mermaid diagrams
+- Route mismatches when slug names drift between log and architecture folders

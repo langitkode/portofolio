@@ -1,0 +1,54 @@
+---
+title: "Mini-Y3-Web-Based-Games Architecture"
+---
+
+## Diagram
+
+<Diagram src="/diagrams/mini-y3-web-based-games.svg" />
+
+## Core Components
+
+- **Client (Next.js App Router)**  
+  Renders game UI, handles input, subscribes to realtime updates, and reflects authoritative state from the database.
+
+- **Realtime Sync Layer (Supabase Realtime)**  
+  Broadcasts database changes to connected clients, enabling turn synchronization without WebSockets.
+
+- **Database (PostgreSQL)**  
+  Acts as the single source of truth for all game state and transitions.
+
+- **Game Cartridges (Per-Game Schemas)**  
+  Isolated tables and rules for each game (Lucky Duel, Battleship, RPS, Tic Tac Toe) that plug into the same shell.
+
+- **Shell Runtime**  
+  Shared routing, room management, UI layout, and synchronization logic used by all cartridges.
+
+---
+
+## Invariants
+
+- Database state is always authoritative
+- Clients never assume a move succeeded until state is re-read
+- All state transitions must be deterministic
+- Games must be replayable from database state alone
+- Turn order must be enforced by state, not by client logic
+
+---
+
+## Key Decisions
+
+- Use PostgreSQL as the game engine for turn-based logic
+- Avoid dedicated game servers to keep system simple and cheap
+- Use realtime subscriptions instead of WebSockets
+- Model games as isolated cartridges to allow easy extension
+- Accept latency to preserve clarity and debuggability
+
+---
+
+## Failure Modes
+
+- Race conditions when both clients submit moves simultaneously
+- Stale UI when multiple tabs subscribe to the same room
+- Delayed realtime events under network instability
+- Invalid transitions from retried requests
+- Orphaned rooms when players disconnect mid-game

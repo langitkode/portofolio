@@ -1,0 +1,28 @@
+<svg width="900" height="460" viewBox="0 0 900 460" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .box { fill: none; stroke: #000; stroke-width: 1.5; }
+    .text { font-family: Arial, sans-serif; font-size: 13px; fill: #000; }
+    .arrow { stroke: #000; stroke-width: 1.2; fill: none; marker-end: url(#arrowhead); }
+    .label { font-size: 12px; fill: #000; }
+  </style>
+
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#000"></polygon>
+    </marker>
+  </defs>
+
+  <!-- Author -->
+  <rect x="40" y="195" width="200" height="70" class="box"></rect>
+  <text x="140" y="225" text-anchor="middle" class="text">Authoring Client</text>
+  <text x="140" y="245" text-anchor="middle" class="label">(Sanity Studio)</text>
+
+  <!-- Content Store -->
+  <rect x="310" y="80" width="240" height="70" class="box"></rect>
+  <text x="430" y="110" text-anchor="middle" class="text">Content Store</text>
+  <text x="430" y="130" text-anchor="middle" class="label">(Sanity Content Lake)</text>
+
+  <!-- Web Client -->
+  <rect x="310" y="195" width="240" height="70" class="box"></rect>
+  <text x="430" y="225" text-anchor="middle" class="text">Web Client</text>
+  </svg>

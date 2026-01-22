@@ -1,0 +1,51 @@
+---
+title: "Headroom Journal Architecture"
+---
+
+## Diagram
+
+<Diagram src="/diagrams/headroom-journal.svg" />
+
+## Core Components
+
+- **Authoring Client (Sanity Studio)**  
+  Structured environment for writing, editing, and versioning content.
+
+- **Content Store (Sanity Content Lake)**  
+  Central source of truth for all documents, metadata, and relations.
+
+- **Web Client (Next.js)**  
+  Publishing layer responsible for rendering content using SSR, ISR, and static generation.
+
+- **Content Fetch Layer**  
+  Optimized query layer that controls caching, revalidation, and data access patterns.
+
+- **Build & Revalidation Pipeline**  
+  Determines when content is rebuilt, revalidated, or served from cache.
+
+- **Edge Delivery Layer**  
+  Distributes rendered content via edge networks for consistent read latency.
+
+## Invariants
+
+- The content store is always the source of truth
+- The web client never mutates content
+- All content must be renderable statically
+- Rendering must be idempotent
+- Publishing must not rely on runtime mutations
+
+## Key Decisions
+
+- Use a headless CMS for authoring, not a markdown repository
+- Separate authoring and publishing systems
+- Optimize read paths over write paths
+- Avoid runtime CMS dependencies in the client
+- Prefer static-first publishing with selective revalidation
+
+## Failure Modes
+
+- Content not updating due to failed revalidation
+- API rate limits during fetch bursts
+- Schema changes without content migration
+- Preview environment drifting from production
+- Cache invalidation inconsistencies

@@ -1,0 +1,51 @@
+---
+title: "Web Factory Architecture"
+---
+
+## Diagram
+
+<Diagram src="/diagrams/web-factory.svg" />
+
+## Core Components
+
+- **Admin Client**  
+  Dashboard to input MSME configurations, choose templates, and trigger the generation process.
+
+- **Configuration Store**  
+  Centralized storage for all configuration data, branding, and site metadata to be generated.
+
+- **Template Schema**  
+  Definition of the web structure in JSON / MDX format which acts as a contract between the generator and the output project.
+
+- **Generator Engine**  
+  Deterministic engine that reads configurations and template schemas then generates a complete Next.js project.
+
+- **Output Repository**  
+  Generated GitHub repository containing final source code, ready for deployment without manual modifications.
+
+- **Hosting Platform**  
+  Static deployment platform which is the final target for the generator output.
+
+## Invariants
+
+- The generator must be deterministic (same input → same output)
+- Template schema must not depend on runtime data
+- Output project must be deployable without manual intervention
+- The admin client never modifies the output directly
+- Configurations must be replayable to regenerate the project at any time
+
+## Key Decisions
+
+- Using code generation instead of runtime templating
+- Separating the template schema from the engine
+- Treating Git as an output artifact, not internal state
+- Deployment is handled by the hosting platform, not the generator
+- Avoiding server runtimes to reduce operational costs
+
+## Failure Modes
+
+- Invalid configuration results in project build failure
+- Template schema changes without version migration
+- Generator crashes during the file emission process
+- Output repo out of sync with the latest configuration
+- Deployment failure due to hosting platform limits

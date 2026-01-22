@@ -2,7 +2,7 @@
 title: "System 01: The Identity Lab"
 date: "2026-01-21"
 description: "Architecting a public lab for systems engineering vs a traditional portfolio."
-tags: ["Architecture", "TanStack", "Cloudflare"]
+tags: ["Architecture", "Vite", "React"]
 ---
 
 # Context
@@ -21,7 +21,7 @@ Static portfolios are marketing sites. They hide the mess. They hide the trade-o
 
 # System design
 
-The system is built on **TanStack Start**. It uses a "Static-First, Interaction-Second" approach.
+The system is built on **Vite** and **React Router**. It uses a "Static-First, Interaction-Second" approach, optimized for zero-config deployment.
 
 - **Content**: MDX-driven writing. Portable, version-controlled.
 - **Interactions**: Convex-driven reactions and views. Minimal, serverless.
@@ -31,15 +31,15 @@ The system is built on **TanStack Start**. It uses a "Static-First, Interaction-
 
 ```mermaid
 graph TD
-    A[MDX Content] --> B[TanStack Start]
+    A[MDX Content] --> B[Vite + React Router]
     C[Convex] <-> B
-    B --> D[Cloudflare Pages]
+    B --> D[Vercel / Cloudflare / Static]
 ```
 
 # Trade-offs
 
-I chose TanStack Start over Next.js.
-_Trade-off_: Smaller ecosystem, but significantly better type safety for search params and transitions.
+I initially chose TanStack Start but pivoted to Vite + React Router.
+_Trade-off_: Lost some built-in SSR features in exchange for significantly faster build times and universal deployment compatibility.
 
 # What broke
 

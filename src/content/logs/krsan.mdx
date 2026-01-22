@@ -14,8 +14,6 @@ They need to manually combine course availability, schedule conflicts, credit li
 
 This system was created after observing multiple students fail to register optimal schedules simply because planning was too complex to do manually.
 
----
-
 ## Problem
 
 Students cannot reliably generate an optimal KRS plan within limited time because:
@@ -26,8 +24,6 @@ Students cannot reliably generate an optimal KRS plan within limited time becaus
 - existing tools are static and non-adaptive
 
 The core problem is **combinatorial complexity exposed to humans**.
-
----
 
 ## Why Existing Solutions Failed
 
@@ -41,8 +37,6 @@ Most existing solutions:
 
 They push complexity to users instead of solving it.
 
----
-
 ## System Design
 
 KRSan was designed as a **planning engine**, not a scheduler UI.
@@ -55,8 +49,6 @@ Key principles:
 - final choice remains human
 
 The system outputs 3–5 valid plans ranked by preference fit.
-
----
 
 ## Architecture
 
@@ -97,16 +89,12 @@ The system outputs 3–5 valid plans ranked by preference fit.
 - Backend → Convex cloud
 - Domain → custom domain (production)
 
----
-
 ## Trade-offs
 
 - Used random sampling instead of full search (accuracy vs speed)
 - Limited plans to 3 results (clarity vs exhaustiveness)
 - AI only explains plans, does not choose (trust vs automation)
 - Chose Convex over Supabase (speed vs ecosystem)
-
----
 
 ## What Broke
 
@@ -118,8 +106,6 @@ The system outputs 3–5 valid plans ranked by preference fit.
 
 Each failure forced simplification of both UI and engine.
 
----
-
 ## What Was Learned
 
 - Planning is a UX problem, not algorithmic one
@@ -127,8 +113,6 @@ Each failure forced simplification of both UI and engine.
 - Constraints must be visible, not hidden
 - AI should explain, not decide
 - Real users will always break assumptions
-
----
 
 ## Result
 
